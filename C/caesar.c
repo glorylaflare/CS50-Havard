@@ -6,14 +6,14 @@
 bool check_args(string args);
 void get_cipher(int arg);
 void generate_cipherchar(int caesar_number, int max_number);
-bool error(void);
+void error(void);
 
 int main(int argc, string argv[])
 {
     bool test = false;
     if (argc == 2)
     {
-        test = (check_args(argv[1]) == false) ? error() : (get_cipher(atoi(argv[1])), true);
+        test = (check_args(argv[1]) == false) ? false : (get_cipher(atoi(argv[1])), true);
     }
 
     if(test == false)
@@ -21,7 +21,6 @@ int main(int argc, string argv[])
         error();
         return 1;
     }
-
     printf("\n");
 }
 
@@ -79,8 +78,7 @@ void generate_cipherchar(int caesar_number, int max_number)
     }
 }
 
-bool error(void)
+void error(void)
 {
-    printf("Usage: ./caesar key");
-    return false;
+    printf("Usage: ./caesar key\n");
 }
